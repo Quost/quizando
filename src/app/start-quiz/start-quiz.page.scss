@@ -1,7 +1,19 @@
-.margin-10{
+.margin-10 {
     padding: 10px;
 }
 
 .input-wrapper {
     margin-bottom: 10px !important;
+}
+
+ion-slides {
+    height: 100%;
+}
+
+.wrong-answer {
+    background-color: red;
+}
+
+.correct-answer {
+    background-color: green;
 }

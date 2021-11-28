@@ -381,7 +381,7 @@ export class DatabaseService {
 
   loadAnswers() {
 
-    return this.database.executeSql('SELECT * FROM answer JOIN question ON question.id = answer.questionId JOIN quiz ON quiz.id = question.quizId', []).then(data => {
+    return this.database.executeSql('SELECT answer.id, answer.title, answer.isCorrect, answer.questionId FROM answer JOIN question ON question.id = answer.questionId JOIN quiz ON quiz.id = question.quizId', []).then(data => {
 
       let answers: Answer[] = [];
 

@@ -8,19 +8,25 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-list>
+    <ion-slides  #slides>
 
-      <ion-item *ngFor="let question of questions;" class="margin-10">
-        {{ question.title }}
-        <div slot="end">
-          <ion-button [routerLink]="['/', 'answer-question', question.id]" color="tertiary">            
-            <ion-icon slot="end" name="help"></ion-icon> Answer
-          </ion-button>
+      <ion-slide *ngFor="let question of questions;" class="margin-10">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              {{ question.title }}
+            </div>
+          </div>
+          <div class="row" *ngFor="let answer of answers;">
+            <div class="col">
+              <ion-button expand="block" shape="round" color="tertiary" id="{{'bt-' + answer.id}}"
+                (click)='checkAnswer(answer, $event)'>{{ answer.title }} </ion-button>
+            </div>
+          </div>
         </div>
-        <br>
-      </ion-item>
+      </ion-slide>
 
-  
-    </ion-list>
+
+    </ion-slides>
   </div>
 </ion-content>

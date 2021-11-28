@@ -1,9 +1,17 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>answer-question</ion-title>
+    <ion-title class="ion-align-items-center">
+      {{ answers[0].quizTitle }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <ion-slides>
+    <ion-slide *ngFor="let question of questions;" class="margin-10">
+      {{ answers.title }}
+      
+    </ion-slide>
 
+  </ion-slides>
 </ion-content>
