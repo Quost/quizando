@@ -75,14 +75,18 @@ export class StartQuizPage {
     //   console.log('isEnd......')
     // } else {
     //   console.log('isNotEnd......')
-      this.slides.lockSwipes(false);
-      this.questionsCount++;
+    this.slides.lockSwipes(false);
+    this.questionsCount++;
+    if (this.questions[this.questionsCount] != undefined) {
       this.db.getAnswers(this.questions[this.questionsCount].id).subscribe(result => {
         this.answers = result;
         this.question = this.questions[this.questionsCount]
       })
-      this.slides.slideNext();      
+      this.slides.slideNext();
       this.slides.lockSwipes(true);
+    } else {
+      this.exibeToast('rightQuestions:'+ this.rightQuestions)
+    }
     // }
   }
 
@@ -118,18 +122,18 @@ export class StartQuizPage {
 
   embaralhar(array) {
     var indice_atual = array.length, valor_temporario, indice_aleatorio;
- 
+
     while (0 !== indice_atual) {
- 
-        indice_aleatorio = Math.floor(Math.random() * indice_atual);
-        indice_atual -= 1;
- 
-        valor_temporario = array[indice_atual];
-        array[indice_atual] = array[indice_aleatorio];
-        array[indice_aleatorio] = valor_temporario;
+
+      indice_aleatorio = Math.floor(Math.random() * indice_atual);
+      indice_atual -= 1;
+
+      valor_temporario = array[indice_atual];
+      array[indice_atual] = array[indice_aleatorio];
+      array[indice_aleatorio] = valor_temporario;
     }
- 
+
     return array;
-}
+  }
 
 }
