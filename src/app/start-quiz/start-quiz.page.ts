@@ -75,9 +75,10 @@ export class StartQuizPage {
     //   console.log('isEnd......')
     // } else {
     //   console.log('isNotEnd......')
-    this.slides.lockSwipes(false);
+    
     this.questionsCount++;
     if (this.questions[this.questionsCount] != undefined) {
+      this.slides.lockSwipes(false);
       this.db.getAnswers(this.questions[this.questionsCount].id).subscribe(result => {
         this.answers = result;
         this.question = this.questions[this.questionsCount]

@@ -6,9 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <ion-slides  #slides>
+<ion-content [fullscreen]="true" class="ion-padding" scroll-y="false">
+    <ion-slides  #slides pager="true">
 
       <ion-slide *ngFor="let question of questions;" class="margin-10" (ionSlideDidChange)="slideChanged()">
         <div class="container">
@@ -28,5 +27,4 @@
 
 
     </ion-slides>
-  </div>
 </ion-content>

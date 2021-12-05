@@ -192,22 +192,22 @@ Values
 INSERT
     or IGNORE INTO answer (title, isCorrect, questionId)
 Values
-('Um altar em honra a Deus', 0 ,4);
+('Um altar', 0 ,4);
 
 INSERT
     or IGNORE INTO answer (title, isCorrect, questionId)
 Values
-('Uma torre muito alta, chamada Torre de Babel', 0 ,4);
+('Uma torre muito alta', 0 ,4);
 
 INSERT
     or IGNORE INTO answer (title, isCorrect, questionId)
 Values
-('Um Templo onde todos pudessem adorar a Deus', 0 ,4);
+('Um Templo', 0 ,4);
 
 INSERT
     or IGNORE INTO answer (title, isCorrect, questionId)
 Values
-('Uma arca (grande embarcação) onde seriam salvos do dilúvio', 1 ,4);
+('Uma arca', 1 ,4);
 
 --
 
