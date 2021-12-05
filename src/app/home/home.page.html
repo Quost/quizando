@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-align-items-center">
+      Quizando
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-list>
+
+      <ion-item *ngFor="let quiz of quizes;" class="margin-10"> 
+        {{ quiz.title }}
+        <div slot="end">
+          <ion-button [routerLink]="['/', 'start-quiz', quiz.id]" color="tertiary">            
+            <ion-icon slot="end" name="play-outline"></ion-icon> Jogar
+          </ion-button>
+        </div>
+      </ion-item>
+
+  
+    </ion-list>
+  </div>
+</ion-content>

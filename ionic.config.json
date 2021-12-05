@@ -1,0 +1,7 @@
+{
+  "name": "quizando-app-matheus-quost",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
