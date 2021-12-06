@@ -15,7 +15,7 @@ export class StartQuizPage {
   questions: Question[] = []
   question: Question
   answers: Answer[] = []
-  answer = {}
+  answer = {} 
 
   questionsCount: number = 0
   rightQuestions: number = 0
@@ -34,26 +34,23 @@ export class StartQuizPage {
         this.db.getQuestions().subscribe(result => {
 
           this.questions = result;
-          console.log(this.embaralhar(this.questions))
+          this.embaralhar(this.questions)
 
         })
         this.question = this.questions[this.questionsCount]
 
         this.db.getAnswers(this.questions[this.questionsCount].id).subscribe(result => {
           this.answers = result;
-          console.log(this.embaralhar(this.answers))
+          this.embaralhar(this.answers)
           this.db.getAnswers('undefined').subscribe(result => {
-            console.log('---')
-            console.log(result)
+            
           })
         })
 
+        this.slides.lockSwipes(true);
+
       }
-
     });
-
-    this.slides.lockSwipes(true);
-
   }
 
   async exibeAlert(msg, header, css) {
@@ -62,7 +59,7 @@ export class StartQuizPage {
       cssClass: css,
       header: header,
       message: msg,
-      buttons: ['Próxima pergunta']
+      buttons: ['Continuar']
     });
 
     await alert.present();
@@ -70,23 +67,29 @@ export class StartQuizPage {
 
     console.log('slides')
     console.log(this.slides)
-
-    // if (this.slides.isEnd()) {
-    //   console.log('isEnd......')
-    // } else {
-    //   console.log('isNotEnd......')
     
-    this.questionsCount++;
-    if (this.questions[this.questionsCount] != undefined) {
+    if (this.questions[this.questionsCount+1] != undefined) {
+      this.questionsCount++;
       this.slides.lockSwipes(false);
       this.db.getAnswers(this.questions[this.questionsCount].id).subscribe(result => {
         this.answers = result;
+        this.embaralhar(this.answers)
         this.question = this.questions[this.questionsCount]
       })
       this.slides.slideNext();
       this.slides.lockSwipes(true);
     } else {
-      this.exibeToast('rightQuestions:'+ this.rightQuestions)
+      this.questionsCount++;
+      const alerta = await this.alertCtrl.create({
+        cssClass: css,
+        header: 'Fim do Quiz',
+        message: 'Você acertou '+ this.rightQuestions+ ' de ' + this.questionsCount + ' perguntas!',
+        buttons: ['Ir para o menu inicial']
+      });
+  
+      await alerta.present();
+      await alerta.onDidDismiss();
+      this.router.navigate(['/home']);
     }
     // }
   }
